@@ -14,7 +14,6 @@ import UserGroupDetailHistory from "./components/admin/UserGroupDetailHistory";
 import Payment from "./components/payment/payment";
 import Profile from "./components/admin/Profile";
 import ResetPassword from "./Auth/ResetPassword";
-// import ViewGroupDetails from "./components/UI/ViewGroupDetail";
 import ViewGroupDetails from "./components/UI/ViewGroupDetail";
 import UserDashboard from "./pages/UserDashboard";
 import Main from "./components/UserDashboard/userContent/Main";
@@ -27,20 +26,18 @@ import { RootState } from "./Redux/store";
 import Page404 from "./pages/404";
 import DetailOfGroupType from "./components/UserDashboard/UI/DetailOfGroupType";
 import ManageUserRequest from "./components/EqubCreatorDashboard/ManageUserRequest";
-// import EqubCreatorDashboardContent from "./components/EqubCreatorDashboard/EqubCreatorDashboardContent";
 import NotificationComponent from "./components/admin/AdminNotification";
 import ManageCreators from "./components/admin/ManageCreator";
 import Root from "./route/Root";
-// import Payout from "./components/UserDashboard/userContent/Payout";
 
 const App = () => {
   const role = useSelector((state: RootState) => state.user.user?.role);
   const user_id = useSelector((state: RootState) => state.user.user?._id);
 
   return (
-    <div className="max-w-[1336px] ">
+    <div className="">
       {/* todo if looks not good remove max-w-[1920px] and above div */}
-      <div className="max-w-[1336px]">
+      <div className="">
         <Routes>
           <Route path="/" element={<Root />}>
             <Route index element={<Home />} />

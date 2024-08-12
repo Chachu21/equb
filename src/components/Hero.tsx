@@ -8,10 +8,10 @@ const Hero = () => {
           <div className="w-full md:w-1/2">
             <div className="md:max-w-md space-y-8">
               <div className="w-12 h-12 bg-[#008B8B] rounded-full" />
-              <h1 className="text-3xl  font-bold text-[#1F284F] dark:text-white md:text-4xl">
+              <h1 className="text-xl  font-bold text-[#1F284F] dark:text-white md:text-3xl">
                 Empowering Collective Prosperity In Digital Age
               </h1>
-              <p className="mt-3 text-[20px] font-medium text-gray-600 dark:text-gray-400">
+              <p className="mt-3 text-lg md:text-[20px] font-medium text-gray-500 dark:text-gray-400">
                 The Equb System redefines savings in the digital era, fostering
                 collective prosperity through democratized access and community
                 collaboration, reshaping financial cooperation.
@@ -19,7 +19,7 @@ const Hero = () => {
               <div className="w-8 float-right h-8 bg-[#008B8B] rounded-full" />
 
               <Link to={"/register"}>
-                <button className=" flex justify-end items-center w-fit px-5 py-2 mt-6 text-md tracking-wider text-white uppercase transition-colors duration-300 transform bg-[#008B8B] rounded-md md:w-auto hover:bg-[#7da7a7] focus:outline-none focus:bg-[#7da7a7]">
+                <button className=" flex justify-end items-center w-fit px-5 py-2 mt-6 text-lg tracking-wider text-white uppercase transition-colors duration-300 transform bg-[#008B8B] rounded-md md:w-auto hover:bg-[#7da7a7] focus:outline-none focus:bg-[#7da7a7]">
                   Get started Now !
                 </button>
               </Link>

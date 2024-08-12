@@ -5,7 +5,6 @@ const Links = [
   { name: "Home", url: "/" },
   { name: "Group", url: "/group" },
   { name: "About", url: "/about" },
-  // { name: "AdminDashboard", url: "/admin" },
 ];
 
 const Navbar = () => {
@@ -23,11 +22,6 @@ const Navbar = () => {
             to="/"
             className="font-pacifico flex flex-col items-center text-[#008B8B]"
           >
-            {/* <img
-              src="/equb1.jpg"
-              alt="logo"
-              className="h-12 w-12 rounded-full"
-            /> */}
             <h1 className="font-medium text-3xl">Equb</h1>
             <p className="font-medium text-2xl">እቁብ</p>
           </NavLink>
@@ -41,7 +35,7 @@ const Navbar = () => {
               <NavLink
                 key={link.name}
                 to={link.url}
-                className="px-3 py-2 cursor-pointer rounded hover:bg-[#7da7a7] hover:text-white focus:text-[#7da7a7]"
+                className="px-3 py-2 cursor-pointer text-[16px] rounded hover:bg-[#7da7a7] hover:text-white focus:text-[#7da7a7]"
               >
                 {link.name}
               </NavLink>
