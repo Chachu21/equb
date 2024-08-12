@@ -8,7 +8,7 @@ const groupSlice = createSlice({
   name: "group",
   initialState,
   reducers: {
-    setGroups: (state, action: PayloadAction<groupsType[]>) => {
+    setGroups: (_state, action: PayloadAction<groupsType[]>) => {
       console.log(action.payload);
       // Update the state with the payload
       return action.payload;

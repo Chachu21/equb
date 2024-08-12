@@ -10,29 +10,27 @@ interface Header {
   title: string;
 }
 
-interface datas {
+interface Datas {
   _id: string;
   status: string;
   name: string;
-  types: string;
   members: string;
   winners: string;
-  createdAt: string;
-  updatedAT: string;
-  member: string;
   amount: string;
+  member: string;
   isCompleted: boolean;
 }
+
 const UserGroupDetailHistory: React.FC = () => {
-  const [filteredUserGroup, setFilteredUsergroup] = useState<datas[]>([]);
-  const [userGroups, setUserGroups] = useState<datas[]>([]);
+  const [filteredUserGroup, setFilteredUsergroup] = useState<Datas[]>([]);
+  const [userGroups, setUserGroups] = useState<Datas[]>([]);
   const userData = useSelector((state: RootState) => state.user.user);
 
   useEffect(() => {
     const fetchUserGroups = async () => {
       try {
-        const userId = userData?._id; // Replace with the actual user ID
-        const response = await axios.get<datas[]>(
+        const userId = userData?._id;
+        const response = await axios.get<Datas[]>(
           `http://localhost:5000/api/v1/group/userJoinedGroups/${userId}`
         );
         setUserGroups(response.data);
@@ -44,7 +42,6 @@ const UserGroupDetailHistory: React.FC = () => {
     fetchUserGroups();
   }, [userData]);
 
-  // Extract only necessary fields from tableData
   const filteredData = userGroups.map(
     ({ _id, name, member, members, winners, amount, status, isCompleted }) => ({
       _id,
@@ -62,12 +59,13 @@ const UserGroupDetailHistory: React.FC = () => {
     { id: "1", title: "GroupId" },
     { id: "2", title: "Status" },
     { id: "3", title: "GroupName" },
-    { id: "4", title: "members" },
-    { id: "5", title: "winners" },
-    { id: "6", title: "amount" },
-    { id: "7", title: "GroupSize" },
-    { id: "8", title: "iscompleted" },
+    { id: "4", title: "Members" },
+    { id: "5", title: "Winners" },
+    { id: "6", title: "Amount" },
+    { id: "7", title: "Member" },
+    { id: "8", title: "IsCompleted" },
   ];
+
   const handleSearch = (searchTerm: string) => {
     const filteredResults = filteredData.filter((data) =>
       data.status.toLowerCase().includes(searchTerm.toLowerCase())
@@ -84,7 +82,6 @@ const UserGroupDetailHistory: React.FC = () => {
           "Content-Type": "application/json",
         },
       };
-      console.log("groupId is :", groupId);
       await axios.delete(
         `http://localhost:5000/api/v1/group/${groupId}`,
         config
@@ -94,19 +91,21 @@ const UserGroupDetailHistory: React.FC = () => {
         filteredUserGroup.filter((group) => group._id !== groupId)
       );
     } catch (error) {
-      console.error("Error deleting user:", error);
+      console.error("Error deleting user group:", error);
     }
   };
+
   return (
     <div>
       <h1 className="text-2xl font-semibold ml-5 mb-2">
-        UserGroupDetailHistory
+        User Group Detail History
       </h1>
       <SearchUi handleSearch={handleSearch} search={"name"} />
       <Tables
         header={header}
         datas={filteredUserGroup.length > 0 ? filteredUserGroup : filteredData}
         onDelete={handleDelete}
+        hasDelete={true}
       />
     </div>
   );

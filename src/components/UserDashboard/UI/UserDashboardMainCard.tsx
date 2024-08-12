@@ -11,7 +11,7 @@ import { AppDispatch } from "../../../Redux/store";
 import { setGroups } from "../../../Redux/Features/groupSlice";
 
 const UserDashboardMainCard = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const [group, setGroup] = useState<groupsType[]>([]);
   const [statusCounts, setStatusCounts] = useState({
     no_completed: 0,
@@ -43,7 +43,9 @@ const UserDashboardMainCard = () => {
         // Fetch member data for each group
         const groupWithMemberData = await Promise.all(
           groupsData.map(async (group: groupsType) => {
-            const memberData = await fetchMemberData(group.members);
+            const memberData = await fetchMemberData(
+              group.members.map((member) => member._id)
+            );
             return { ...group, members: memberData };
           })
         );
@@ -81,9 +83,9 @@ const UserDashboardMainCard = () => {
   useEffect(() => {
     if (filteredGroups.length > 0) {
       dispatch(setGroups(filteredGroups));
-      Navigate("/userDashboard/statusdetailofgroup");
+      navigate("/userDashboard/statusdetailofgroup");
     }
-  }, [filteredGroups, dispatch, Navigate]);
+  }, [filteredGroups, dispatch, navigate]);
 
   const statusCards = [
     {

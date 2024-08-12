@@ -4,8 +4,11 @@ interface Header {
   id: string;
   title: string;
 }
+interface BaseTableRow {
+  _id: string;
+}
 
-type TableRow<T> = {
+type TableRow<T> = BaseTableRow & {
   [K in keyof T]: string | number | boolean | Date | null | undefined;
 };
 
@@ -70,7 +73,7 @@ const Tables = <T,>({ header, datas, onDelete, hasDelete }: TableProps<T>) => {
                 {hasDelete && (
                   <td className=" h-full justify-center flex mt-4">
                     <button
-                      onClick={() => handleDelete(data._id)}
+                      onClick={() => handleDelete(data._id as string)}
                       className="text-red-600  text-center hover:text-red-900"
                     >
                       Delete

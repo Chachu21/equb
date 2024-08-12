@@ -78,7 +78,7 @@ const Payout = () => {
     // const resolvedUsersData = await Promise.all(usersDataPromises);
     // setUsers(resolvedUsersData); // Set users state after promises are resolved
 
-    const round = group?.rounds.find((round) => round.winner === userId);
+    const round = group?.rounds.find((round) => round.winner._id === userId);
     if (userId && round && round.receivedPayment) {
       toast.warning("You have already received payments for this round");
     }

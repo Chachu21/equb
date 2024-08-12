@@ -27,20 +27,16 @@ const UserTables: React.FC<TableProps> = ({
   onDelete,
   onSaveEdit,
 }) => {
-  //set current page is by default 1
   const [currentPage, setCurrentPage] = useState<number>(1);
-  //set nubber of table list in single page is 6
   const [itemsPerPage] = useState<number>(5);
   const [editingUserId, setEditingUserId] = useState<string | null>(null);
   const [editedUser, setEditedUser] = useState<UserData | null>(null);
 
-  //format string to change date value to approprate string format
   const formatDateString = (dateString: string) => {
     const date = new Date(dateString);
     return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
   };
 
-  // logic for paginations
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = users.slice(indexOfFirstItem, indexOfLastItem);
@@ -174,22 +170,21 @@ const UserTables: React.FC<TableProps> = ({
           ))}
         </tbody>
       </table>
-      {/* pagination navs */}
       <nav
         className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
         aria-label="Table navigation"
       >
         <span className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
           Showing{" "}
-          <span className="font-semibold p-1 text-gray-500 bg-white  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          <span className="font-semibold p-1 text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
             {indexOfFirstItem + 1}
           </span>
           -
-          <span className="font-semibold p-1  text-gray-500 bg-white  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          <span className="font-semibold p-1 text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
             {Math.min(indexOfLastItem, users.length)}
           </span>{" "}
           of{" "}
-          <span className="font-semibold p-1  text-gray-500 bg-white  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          <span className="font-semibold p-1 text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
             {users.length}
           </span>
         </span>
@@ -204,7 +199,7 @@ const UserTables: React.FC<TableProps> = ({
             </button>
           </li>
           {Array.from({ length: Math.ceil(users.length / itemsPerPage) }).map(
-            (item, index) => (
+            (_, index) => (
               <li key={index}>
                 <button
                   onClick={() => paginate(index + 1)}
