@@ -8,6 +8,7 @@ import logins from "../../public/logins.jpg";
 import { loginSuccess } from "../Redux/Features/userSlice";
 import { toast } from "react-toastify";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5"; // Correct import
+import { backend_url } from "../constant";
 
 // Define password rules regex
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
@@ -69,13 +70,10 @@ const Login = () => {
     validationSchema: basicSchema,
     onSubmit: async (values, actions) => {
       try {
-        const response = await axios.post(
-          "http://localhost:5000/api/v1/users/login",
-          {
-            email: values.email,
-            password: values.password,
-          }
-        );
+        const response = await axios.post(`${backend_url}/api/v1/users/login`, {
+          email: values.email,
+          password: values.password,
+        });
         const userData = response.data;
         dispatch(loginSuccess(userData));
         toast.success(response.data.message);

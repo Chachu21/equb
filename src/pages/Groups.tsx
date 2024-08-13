@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from "../components/EqubCard";
 import { FaSearch } from "react-icons/fa";
 import React from "react";
+import { backend_url } from "../constant";
 
 interface EqubType {
   _id: string;
@@ -29,16 +30,13 @@ const Equb = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/v1/group/get`,
-          {
-            params: {
-              ...queries,
-              page: currentPage,
-              pageSize: 10,
-            },
-          }
-        );
+        const response = await axios.get(`${backend_url}/api/v1/group/get`, {
+          params: {
+            ...queries,
+            page: currentPage,
+            pageSize: 10,
+          },
+        });
         console.log(response.data.searchResult);
         setEqubType(response.data.searchResult);
         setTotalPages(response.data.totalPages);
@@ -54,17 +52,14 @@ const Equb = () => {
     e.preventDefault();
     setCurrentPage(1);
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/v1/group/get`,
-        {
-          params: {
-            ...queries,
-            page: 1, // Always reset to page 1 when submitting the form
-            pageSize: 10,
-            // sort: "-createdAt", // Sort by createdAt attribute in descending order
-          },
-        }
-      );
+      const response = await axios.get(`${backend_url}/api/v1/group/get`, {
+        params: {
+          ...queries,
+          page: 1, // Always reset to page 1 when submitting the form
+          pageSize: 10,
+          // sort: "-createdAt", // Sort by createdAt attribute in descending order
+        },
+      });
 
       setFilteredData(response.data.searchResult);
       setTotalPages(response.data.totalPages);

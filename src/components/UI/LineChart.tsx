@@ -14,6 +14,7 @@ import { groupsType } from "../../types/groupType";
 import { usersType } from "../../types/usersType";
 import { requestType } from "../../types/request";
 import { commetType } from "../../types/comments";
+import { backend_url } from "../../constant";
 
 const LineCharts: React.FC = () => {
   const [selectedMonth, setSelectedMonth] = useState<number>(
@@ -33,10 +34,10 @@ const LineCharts: React.FC = () => {
         requestsResponse,
         usersResponse,
       ] = await Promise.all([
-        axios.get(`http://localhost:5000/api/v1/comment/get`),
-        axios.get(`http://localhost:5000/api/v1/group/getAll`),
-        axios.get(`http://localhost:5000/api/v1/request/get`),
-        axios.get(`http://localhost:5000/api/v1/users`),
+        axios.get(`${backend_url}/api/v1/comment/get`),
+        axios.get(`${backend_url}/api/v1/group/getAll`),
+        axios.get(`${backend_url}/api/v1/request/get`),
+        axios.get(`${backend_url}/api/v1/users`),
       ]);
 
       const comments = commentsResponse.data;

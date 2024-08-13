@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { groupsType } from "../../types/groupType";
+import { backend_url } from "../../constant";
 
 // interface Group {
 //   _id: string;
@@ -23,11 +24,11 @@ const ViewGroupDetails: React.FC = () => {
     const fetchGroupsAndFilterByStatus = async () => {
       try {
         const response = await axios.get<{ groups: groupsType[] }>(
-          "http://localhost:5000/api/v1/group/getAll"
+          `${backend_url}/api/v1/group/getAll`
         );
         // Extract groups from response data
         const allGroups = response.data.groups;
-        console.log(allGroups);
+        // console.log(allGroups);
         // Filter groups based on status
         const filteredGroups = allGroups.filter(
           (group) => group.status === status

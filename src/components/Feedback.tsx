@@ -9,6 +9,7 @@ import { RootState } from "../Redux/store";
 import Modal from "./Model/JoinModel";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { backend_url } from "../constant";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -45,18 +46,13 @@ const FeedbackForm = () => {
     // Handle form submission
 
     if (isLogin && token) {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/comment/create",
-        values,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await axios.post(`${backend_url}/api/v1/comment/create`, values, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       toast.success("Successfully commented");
-      console.log(response.data);
     } else {
       setShowModal(true);
       return;

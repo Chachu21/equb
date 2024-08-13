@@ -8,6 +8,7 @@ import { usersType } from "../../../types/usersType";
 import axios, { AxiosError } from "axios";
 import profileImage from "../../../../public/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg";
 import { toast } from "react-toastify";
+import { backend_url } from "../../../constant";
 
 const UserHeader = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +22,7 @@ const UserHeader = () => {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/v1/users/get/${id}`
+          `${backend_url}/api/v1/users/get/${id}`
         );
         setUser(response.data.user);
       } catch (error) {

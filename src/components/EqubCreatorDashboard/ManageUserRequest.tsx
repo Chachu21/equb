@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SearchUi from "../UI/SearchUi";
 import Tables from "../UI/Tables";
+import { backend_url } from "../../constant";
 
 interface UserRequest {
   _id: string;
@@ -31,7 +32,7 @@ const ManageUserRequest = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get<UserRequest[]>(
-        "http://localhost:5000/api/v1/request/get"
+        `${backend_url}/api/v1/request/get`
       );
       setTableData(response.data);
     } catch (error) {
@@ -61,9 +62,7 @@ const ManageUserRequest = () => {
 
   const handleDelete = async (requestId: string) => {
     try {
-      await axios.delete(
-        `http://localhost:5000/api/v1/request/delete/${requestId}`
-      );
+      await axios.delete(`${backend_url}/api/v1/request/delete/${requestId}`);
       setTableData(tableData.filter((request) => request._id !== requestId));
       setFilteredUserRequest(
         filteredUserRequest.filter((request) => request._id !== requestId)

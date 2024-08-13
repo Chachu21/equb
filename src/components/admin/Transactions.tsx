@@ -1,6 +1,7 @@
 import UserTransaction from "../UserDashboard/UI/UserTransaction";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
+import { backend_url } from "../../constant";
 
 const Transactions = () => {
   const user_id = useSelector((state: RootState) => state.user.user?._id);
@@ -11,7 +12,7 @@ const Transactions = () => {
         manage users transaction{" "}
       </h1>
       <UserTransaction
-        urll="http://localhost:5000/api/v1/payment/get"
+        urll={`${backend_url}/api/v1/payment/get`}
         user_id={`${user_id}`}
         isSearch={true}
       />

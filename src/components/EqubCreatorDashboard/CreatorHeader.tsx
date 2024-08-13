@@ -8,6 +8,7 @@ import { AppDispatch, RootState } from "../../Redux/store";
 import { usersType } from "../../types/usersType";
 import { Link, useNavigate } from "react-router-dom";
 import { logoutSuccess, menuBar } from "../../Redux/Features/userSlice";
+import { backend_url } from "../../constant";
 
 const CreatorHeader = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +22,7 @@ const CreatorHeader = () => {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/v1/users/get/${id}`
+          `${backend_url}/api/v1/users/get/${id}`
         );
         setUser(response.data.user);
       } catch (error) {

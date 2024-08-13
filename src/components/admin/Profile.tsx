@@ -5,6 +5,7 @@ import { RootState } from "../../Redux/store";
 import { usersType } from "../../types/usersType";
 import profiles from "../../../public/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg";
 import { toast } from "react-toastify";
+import { backend_url } from "../../constant";
 const Profile: React.FC = () => {
   const [user, setUser] = useState<usersType | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "" });
@@ -25,7 +26,7 @@ const Profile: React.FC = () => {
           };
 
           const response = await axios.get(
-            `http://localhost:5000/api/v1/users/get/${id}`,
+            `${backend_url}/api/v1/users/get/${id}`,
             config
           );
           setUser(response.data.user);
@@ -80,7 +81,7 @@ const Profile: React.FC = () => {
           },
         };
         await axios.put(
-          `http://localhost:5000/api/v1/users/update/${userId}`,
+          `${backend_url}/api/v1/users/update/${userId}`,
           updatedUserData,
           config
         );

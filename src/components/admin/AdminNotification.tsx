@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { backend_url } from "../../constant";
 
 interface Notification {
   _id: number;
@@ -18,7 +19,7 @@ const NotificationComponent: React.FC = () => {
     const fetchNotifications = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/v1/notification/get"
+          `${backend_url}/api/v1/notification/get`
         );
         setNotifications(response.data.notifications);
         setUnseenCount(response.data.unreadCount);
@@ -31,9 +32,7 @@ const NotificationComponent: React.FC = () => {
 
   const markAsRead = async (id: number) => {
     try {
-      await axios.patch(
-        `http://localhost:5000/api/v1/notification/markAsRead/${id}`
-      );
+      await axios.patch(`${backend_url}/api/v1/notification/markAsRead/${id}`);
       setNotifications((prevNotifications) =>
         prevNotifications.map((notification) =>
           notification._id === id
@@ -49,9 +48,7 @@ const NotificationComponent: React.FC = () => {
 
   const deleteNotification = async (id: number) => {
     try {
-      await axios.delete(
-        `http://localhost:5000/api/v1/notification/delete/${id}`
-      );
+      await axios.delete(`${backend_url}/api/v1/notification/delete/${id}`);
       setNotifications((prevNotifications) =>
         prevNotifications.filter((notification) => notification._id !== id)
       );

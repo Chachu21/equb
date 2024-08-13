@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { backend_url } from "../../../constant";
 
 const SendRequest = () => {
   const [equbType, setEqubType] = useState<string>("");
@@ -40,7 +41,7 @@ const SendRequest = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/v1/request/create", {
+      await axios.post(`${backend_url}/api/v1/request/create`, {
         equbType,
         equbTypeLength,
         amount,

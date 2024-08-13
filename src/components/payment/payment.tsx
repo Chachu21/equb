@@ -6,6 +6,7 @@ import { usersType } from "../../types/usersType";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { backend_url } from "../../constant";
 
 const Payment = () => {
   const user_id = useSelector((state: RootState) => state.user.user?._id);
@@ -14,9 +15,7 @@ const Payment = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const res = await axios.get(
-        `http://localhost:5000/api/v1/users/${user_id}`
-      );
+      const res = await axios.get(`${backend_url}/api/v1/users/${user_id}`);
       if (res.status === 200 && res.statusText === "OK") {
         setUser(res.data.user);
       }
@@ -62,7 +61,7 @@ const Payment = () => {
                 }
                 // Send API request to update user with payment details
                 const res = await axios.put(
-                  `http://localhost:5000/api/v1/users/update/${user_id}`,
+                  `${backend_url}/api/v1/users/update/${user_id}`,
                   payload
                 );
 

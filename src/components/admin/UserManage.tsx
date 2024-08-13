@@ -6,6 +6,7 @@ import { RootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
 import { usersType } from "../../types/usersType";
 import { toast } from "react-toastify";
+import { backend_url } from "../../constant";
 
 interface UserData {
   address: string;
@@ -28,7 +29,7 @@ const UserManage = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get<usersType[]>(
-        "http://localhost:5000/api/v1/users"
+        `${backend_url}/api/v1/users`
       );
       setTableData(response.data.filter((res) => res.role === "user"));
     } catch (error) {
@@ -66,7 +67,7 @@ const UserManage = () => {
       };
 
       const response = await axios.get(
-        `http://localhost:5000/api/v1/group/get/by/${userId}`,
+        `${backend_url}/api/v1/group/get/by/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -80,7 +81,7 @@ const UserManage = () => {
         toast.warning("this action allowed for admin");
       } else {
         await axios.delete(
-          `http://localhost:5000/api/v1/users/delete/${userId}`,
+          `${backend_url}/api/v1/users/delete/${userId}`,
           config
         );
       }

@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { backend_url } from "../constant";
 
 // interface RouteParams {
 //   token: string;
@@ -8,7 +9,7 @@ import axios from "axios";
 
 const ResetPassword: React.FC = () => {
   const navigate = useNavigate();
-  const { token } = useParams<any>();
+  const { token } = useParams<string>();
   const [password, setPassword] = useState<string>("");
   const [message, setMessage] = useState<string | null>(null);
 
@@ -16,7 +17,7 @@ const ResetPassword: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.post<{ message: string }>(
-        `http://localhost:5000/api/v1/users/resetPassword/${token}`,
+        `${backend_url}/api/v1/users/resetPassword/${token}`,
         {
           password,
         }

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
 import Tables from "../UI/Tables";
+import { backend_url } from "../../constant";
 
 interface Header {
   id: string;
@@ -31,7 +32,7 @@ const UserGroupDetailHistory: React.FC = () => {
       try {
         const userId = userData?._id;
         const response = await axios.get<Datas[]>(
-          `http://localhost:5000/api/v1/group/userJoinedGroups/${userId}`
+          `${backend_url}/api/v1/group/userJoinedGroups/${userId}`
         );
         setUserGroups(response.data);
       } catch (error) {
@@ -83,7 +84,7 @@ const UserGroupDetailHistory: React.FC = () => {
         },
       };
       await axios.delete(
-        `http://localhost:5000/api/v1/group/${groupId}`,
+        `${backend_url}/api/v1/group/${groupId}`,
         config
       );
       setUserGroups(userGroups.filter((group) => group._id !== groupId));

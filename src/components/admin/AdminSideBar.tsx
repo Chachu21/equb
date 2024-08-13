@@ -13,6 +13,7 @@ import { menuBar } from "../../Redux/Features/userSlice";
 import { FaUserGroup } from "react-icons/fa6";
 import { GrTransaction } from "react-icons/gr";
 import axios from "axios";
+import { backend_url } from "../../constant";
 
 const LinkComponent = [
   {
@@ -58,7 +59,7 @@ const AdminSideBar = () => {
     const fetchNotifications = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/v1/notification/get"
+          `${backend_url}api/v1/notification/get`
         );
         // setNotifications(response.data.notifications);
         setUnseenCount(response.data.unreadCount);

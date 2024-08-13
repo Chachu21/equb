@@ -29,6 +29,7 @@ import ManageUserRequest from "./components/EqubCreatorDashboard/ManageUserReque
 import NotificationComponent from "./components/admin/AdminNotification";
 import ManageCreators from "./components/admin/ManageCreator";
 import Root from "./route/Root";
+import { backend_url } from "./constant";
 
 const App = () => {
   const role = useSelector((state: RootState) => state.user.user?.role);
@@ -83,7 +84,7 @@ const App = () => {
                 path="/userDashboard/transactions"
                 element={
                   <UserTransaction
-                    urll={`http://localhost:5000/api/v1/payment/get/${user_id}`}
+                    urll={`${backend_url}api/v1/payment/get/${user_id}`}
                     user_id={`${user_id}`}
                   />
                 }

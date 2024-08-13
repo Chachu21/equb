@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Card from "../components/EqubCard";
 import { useNavigate } from "react-router-dom";
+import { backend_url } from "../constant";
 
 interface EqubType {
   _id: string;
@@ -57,26 +58,23 @@ const SampleEqubGroup = () => {
   const navigate = useNavigate();
 
   const [equbType, setEqubType] = useState<EqubType[]>([]);
-  const queries = {};
 
   //Fetch recently created  sample equb group
 
   useEffect(() => {
+    const queries = {};
     const smapleGroup = async () => {
-      const response = await axios.get(
-        "http://localhost:5000/api/v1/group/get",
-        {
-          params: {
-            ...queries,
-            page: 1,
-            pageSize: 5,
-          },
-        }
-      );
+      const response = await axios.get(`${backend_url}/api/v1/group/get`, {
+        params: {
+          ...queries,
+          page: 1,
+          pageSize: 5,
+        },
+      });
       setEqubType(response.data.searchResult);
     };
     smapleGroup();
-  }, [queries]);
+  }, []);
 
   return (
     <div className="container mx-auto">

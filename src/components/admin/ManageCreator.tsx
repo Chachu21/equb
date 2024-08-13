@@ -6,6 +6,7 @@ import { RootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
 import { usersType } from "../../types/usersType";
 import { MdPersonAddAlt1 } from "react-icons/md";
+import { backend_url } from "../../constant";
 interface UserData {
   address: string;
   name: string;
@@ -42,7 +43,7 @@ const ManageCreators = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get<usersType[]>(
-        "http://localhost:5000/api/v1/users"
+        `${backend_url}/api/v1/users`
       );
       setTableData(response.data.filter((res) => res.role === "creator"));
     } catch (error) {
@@ -80,7 +81,7 @@ const ManageCreators = () => {
       };
 
       await axios.delete(
-        `http://localhost:5000/api/v1/users/delete/${userId}`,
+        `${backend_url}/api/v1/users/delete/${userId}`,
         config
       );
       setTableData(tableData.filter((user) => user._id !== userId));
@@ -111,11 +112,7 @@ const ManageCreators = () => {
         agreeTerms: true,
       };
 
-      await axios.post(
-        "http://localhost:5000/api/v1/users/signup",
-        userDatas,
-        config
-      );
+      await axios.post(`${backend_url}/api/v1/users/signup`, userDatas, config);
       // Refetch data to update the table
       fetchData();
       // Clear form data

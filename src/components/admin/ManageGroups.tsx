@@ -5,6 +5,7 @@ import Tables from "../UI/Tables";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
 import CreateGroup from "../UserDashboard/CreateGroup";
+import { backend_url } from "../../constant";
 
 interface EqubGroup {
   _id: string;
@@ -28,9 +29,7 @@ const ManageGroups = () => {
   }, []);
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/v1/group/getAll"
-      );
+      const response = await axios.get(`${backend_url}/api/v1/group/getAll`);
       setEqubGroups(response.data.groups);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -84,7 +83,7 @@ const ManageGroups = () => {
         },
       };
       await axios.delete(
-        `http://localhost:5000/api/v1/group/delete/${groupId}`,
+        `${backend_url}/api/v1/group/delete/${groupId}`,
         config
       );
       // If successful, call the parent component handler to update the state

@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/store";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { backend_url } from "../../../constant";
 
 enum STEPS {
   INFO = 0,
@@ -63,7 +64,7 @@ const Form = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const response = await axios.get(
-        `http://localhost:5000/api/v1/users/get/${id}`
+        `${backend_url}/api/v1/users/get/${id}`
       );
       setUserData(response.data.user);
     };
@@ -138,7 +139,7 @@ const Form = () => {
         // }
         // Send the data to the backend
         await axios.put(
-          `http://localhost:5000/api/v1/users/update/${id}`,
+          `${backend_url}/api/v1/users/update/${id}`,
           updatedData
         );
 

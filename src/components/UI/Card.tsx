@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { backend_url } from "../../constant";
 
 const Card = () => {
   const [groups, setGroups] = useState<string[]>([]);
@@ -13,9 +14,7 @@ const Card = () => {
   useEffect(() => {
     const fetchStatusCounts = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/v1/group/getAll`
-        );
+        const response = await axios.get(`${backend_url}/api/v1/group/getAll`);
         const grp = response.data.groups.map(
           (group: { _id: string }) => group._id
         );

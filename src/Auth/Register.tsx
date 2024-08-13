@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import register from "../../public/assets/register.webp";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { backend_url } from "../constant";
 
 // Define password rules regex
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
@@ -66,7 +67,7 @@ const Register = () => {
     onSubmit: async (values, actions) => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/v1/users/signUp",
+          `${backend_url}/api/v1/users/signUp`,
           {
             name: values.name,
             email: values.email, // Pass values.email
