@@ -84,34 +84,30 @@ const SampleEqubGroup = () => {
         </h1>
       </div>
       <div className="container">
-        <Slider {...settings}>
-          {equbType.length > 0 &&
-            equbType.map((equb) => (
-              <div
-                className=""
-                key={equb._id}
-                onClick={() => {
-                  navigate("/group");
-                }}
-              >
-                <Card
-                  equb_Group_id={equb._id}
-                  name={equb.name}
-                  No_member={equb.member}
-                  createdAt={equb.createdOn}
-                  amount={equb.amount}
-                  types={equb.types}
-                  status={equb.status}
-                />
-              </div>
-            ))}
-          {equbType.length === 0 && (
-            <div className="w-full md:container md:mx-auto md:max-w-7xl grid grid-cols-1 md:grid-cols-3 md:gap-8 gap-3 ">
-              Wait untill some one create group, go and create your group as you
-              want
-            </div>
-          )}
-        </Slider>
+        {equbType.length > 0 && (
+          <Slider {...settings}>
+            {equbType.length > 0 &&
+              equbType.map((equb) => (
+                <div
+                  className=""
+                  key={equb._id}
+                  onClick={() => {
+                    navigate("/group");
+                  }}
+                >
+                  <Card
+                    equb_Group_id={equb._id}
+                    name={equb.name}
+                    No_member={equb.member}
+                    createdAt={equb.createdOn}
+                    amount={equb.amount}
+                    types={equb.types}
+                    status={equb.status}
+                  />
+                </div>
+              ))}
+          </Slider>
+        )}
       </div>
     </div>
   );

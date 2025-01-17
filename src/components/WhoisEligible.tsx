@@ -3,7 +3,7 @@ import term from "../../public/term.jpg";
 const WhoisEligible = () => {
   return (
     <div className="grid grid-cols-1, md:grid-cols-2 gap-6 w-full pt-5 md:pt-32 container mx-auto">
-      <div className="py-4 bg-white rounded text-center order-1 md:order-1">
+      <div className="py-4 bg-white  rounded text-center order-1 md:order-1">
         <h1 className="text-2xl font-semibold mb-2 py-5 text-[#1F284F]">
           Who is eligible ?
         </h1>

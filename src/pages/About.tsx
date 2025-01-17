@@ -30,21 +30,21 @@ const About = () => {
       </section>
       <section className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-10">
-          <div className="flex flex-col items-start bg-white shadow-lg p-6 rounded-lg mb-4 md:mb-0">
-            <h2 className="text-xl md:text-2xl text-[#1F284F] font-bold mb-2 md:mb-4">
+          <div className="flex flex-col items-start bg-white dark:bg-gray-600 dark:text-white shadow-lg p-6 rounded-lg mb-4 md:mb-0">
+            <h2 className="text-xl md:text-2xl text-[#1F284F] dark:text-white  font-bold mb-2 md:mb-4">
               Vision
             </h2>
-            <p className="text-gray-600 text-left">
+            <p className="text-gray-600 text-left dark:text-gray-100">
               The Equb System redefines savings in the digital era, fostering
               collective prosperity through democratized access and community
               collaboration, reshaping financial cooperation.
             </p>
           </div>
-          <div className="flex flex-col items-start bg-white shadow-lg p-6 rounded-lg mb-4 md:mb-0">
-            <h2 className="text-xl md:text-2xl text-[#1F284F] font-bold mb-2 md:mb-4">
+          <div className="flex flex-col items-start bg-white dark:bg-gray-600 shadow-lg p-6 rounded-lg mb-4 md:mb-0">
+            <h2 className="text-xl md:text-2xl text-[#1F284F] dark:text-white  font-bold mb-2 md:mb-4">
               Mission
             </h2>
-            <p className="text-gray-600 text-left">
+            <p className="text-gray-600 text-left dark:text-gray-100 ">
               The Equb System redefines savings in the digital era, fostering
               collective prosperity through democratized access and community
               collaboration, reshaping financial cooperation.

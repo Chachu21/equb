@@ -1,11 +1,11 @@
 const HowItWorks = () => {
   return (
-    <div className="flex container mx-auto w-full justify-center">
+    <div className="flex container mx-auto w-full justify-center dark:text-white">
       <div className="flex flex-col space-y-5 mt-10 justify-center">
-        <h2 className="flex justify-center items-center my-12 pt-10 text-3xl text-[#1F284F] underline underline-offset-8">
+        <h2 className="flex justify-center items-center my-12 pt-10 text-3xl text-[#1F284F] dark:text-white  underline underline-offset-8">
           How It Works
         </h2>
-        <div className="flex flex-col md:flex-row md:space-x-24 justify-center text-gray-500">
+        <div className="flex flex-col md:flex-row md:space-x-24 justify-center text-gray-500 dark:text-gray-50">
           <div className="flex items-center mx-4 mb-8 md:mb-0">
             <div className="bg-[#008B8B] text-white rounded-full w-16 h-16 flex items-center justify-center text-md font-bold m-6">
               1
@@ -28,7 +28,7 @@ const HowItWorks = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:space-x-24 justify-center text-gray-500">
+        <div className="flex flex-col md:flex-row md:space-x-24 justify-center text-gray-500 dark:text-gray-50">
           <div className="flex items-center mx-4 mb-8 md:mb-0">
             <div className="bg-[#008B8B] text-white rounded-full w-16 h-16 flex items-center justify-center text-md font-bold m-6">
               3
@@ -51,7 +51,7 @@ const HowItWorks = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:space-x-24 justify-center text-gray-500">
+        <div className="flex flex-col md:flex-row md:space-x-24 justify-center text-gray-500 dark:text-gray-50">
           <div className="flex items-center mx-4 mb-8 md:mb-0">
             <div className="bg-[#008B8B] text-white rounded-full w-16 h-16 flex items-center justify-center text-md font-bold m-6">
               5

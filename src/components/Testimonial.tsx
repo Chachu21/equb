@@ -70,7 +70,7 @@ const Testimonial = () => {
 
   return (
     <div className="container bg-white dark:bg-gray-900 dark:text-white flex flex-col jsutify-evenly items-center mx-auto  space-y-32 py-10 ">
-      <h1 className="text-3xl font-bold mb-4 text-[#1F284F]">
+      <h1 className="text-3xl font-bold mb-4 text-[#1F284F] dark:text-white">
         Everybody Loves Us
       </h1>
       {/* <p className="text-lg text-gray-600 mb-8 text-center">
@@ -109,7 +109,7 @@ const Testimonial = () => {
               {/* Testimonial content */}
               <div className="p-4">
                 {/* Comment */}
-                <p className="text-gray-800 mb-4 text-center">
+                <p className="text-gray-800 dark:text-gray-200 mb-4 text-center">
                   {testimonial.comment}
                 </p>
                 {/* Name */}

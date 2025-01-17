@@ -9,19 +9,18 @@ interface FeatureCardProps {
 
 const FeatureCard = (props: FeatureCardProps) => {
   return (
-    <div className=" my-3 md:my-2 mx-auto container">
-      <div className="w-full md:w-[430px] shadow-sm border-gray-50 border-2 bg-white h-auto p-10 rounded-[18px]">
-        <div className="flex flex-col justify-center items-center space-y-2  px-8 w-full h-full">
+    <div className="my-3 md:my-4 mx-auto container">
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg shadow-md border border-gray-200 bg-white dark:bg-gray-500 dark:text-800 h-[300px] p-6 rounded-xl">
+        <div className="flex flex-col justify-center items-center space-y-4 w-full h-full">
           <FontAwesomeIcon
             icon={props.icon}
             size="2x"
-            className="text-[#008B8B]"
+            className="text-[#008B8B] dark:text-blue-700"
           />
-          {/* Use props.icon */}
-          <h2 className="text-2xl leading-6 font-bold text-[#1F284F]">
+          <h2 className="text-lg md:text-xl font-bold text-[#1F284F]  text-center">
             {props.title}
           </h2>
-          <p className="text-[16px] leading-6 text-gray-500 font-normal justify-start text-center">
+          <p className="text-sm md:text-base text-gray-500 dark:text-gray-900 font-normal text-center leading-relaxed">
             {props.content}
           </p>
         </div>

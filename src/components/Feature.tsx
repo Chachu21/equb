@@ -51,10 +51,10 @@ const Feature = () => {
 
   return (
     <div className="mx-5 my-10">
-      <h2 className="flex justify-center items-center my-5 pt-10 text-3xl text-[#1F284F] underline underline-offset-8">
+      <h2 className="flex justify-center items-center my-5 pt-10 text-3xl text-[#1F284F] dark:text-white underline underline-offset-8">
         Features
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-1  place-content-center place-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3  place-content-center place-items-center">
         {featureData.map((card, index) => (
           <FeatureCard
             key={index}

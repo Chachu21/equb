@@ -17,7 +17,7 @@ const FAQItem: React.FC<{ faq: FAQ }> = ({ faq }) => {
         <h3 className="text-md font-semibold">{faq.question}</h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className={`w-6 h-6 transition-transform ${
+          className={`w-6 h-6 transition-transform dark:text-white ${
             isOpen ? "transform rotate-180" : ""
           }`}
           viewBox="0 0 24 24"
@@ -64,7 +64,7 @@ const FrequentlyAskedQuestions: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-center items-center py-5 md:py-40 w-full container mx-auto">
-      <h2 className="text-2xl font-semibold text-center my-8 text-[#1F284F]">
+      <h2 className="text-2xl font-semibold text-center my-8 text-[#1F284F] dark:text-white">
         Frequently Asked Questions
       </h2>
       <FAQs faqs={faqs} />

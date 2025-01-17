@@ -131,7 +131,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center content-center mt-1 mb-20 md:mt-5">
+    <div className="container mx-auto grid grid-cols-1 bg-white md:grid-cols-2 items-center content-center mt-1 mb-20 md:mt-5">
       <div className="hidden md:block order-1 md:order-1">
         <img
           src={logins}
@@ -139,7 +139,7 @@ const Login = () => {
           className="object-cover items-center rounded-md "
         />
       </div>
-      <div className="order-2 md:order-2 w-full bg-gray-50 dark:bg-gray-900 dark:text-white overflow-hidden">
+      <div className="order-2 md:order-2 w-full overflow-hidden">
         {error && (
           <div className="text-red-500 text-center font-semibold text-xl">
             {error}
